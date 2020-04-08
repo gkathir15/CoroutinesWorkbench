@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:animationCache="true"
+    android:id="@+id/rootV"
+    tools:context=".SocketActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/connect"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Connect"
+        android:elevation="8dp"
+        android:background="@color/greey"
+        android:shadowColor="@color/colorPrimaryDark"
+        android:layout_margin="15dp"
+        android:padding="12dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/disConnect"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="DisConnect"
+        android:elevation="8dp"
+        android:background="@color/greey"
+        android:shadowColor="@color/colorPrimaryDark"
+        android:layout_margin="15dp"
+        android:padding="12dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/status"
+       android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:text="Status:DisConn..."
+        android:layout_margin="15dp"
+        android:padding="12dp"/>
+
+
+
+
+        <TextView
+            android:id="@+id/dataV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/orbitron_medium"
+            android:textSize="50dp"
+            tools:text="11:57:53 PM"
+            android:layout_centerInParent="true"/>
+
+
+</RelativeLayout>

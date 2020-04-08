@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/getData"
+       android:text="Fetch Data"
+       android:textColor="@color/colorPrimary"
+       android:elevation="20dp"
+       android:padding="19dp"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Socket   "
+        android:id="@+id/socket"
+        android:textSize="15sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:drawableRight="@drawable/ic_arrow_forward_black_24dp" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_above="@id/remoteImage"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/progressIndicator"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/remoteImage"
+        android:scaleType="centerCrop"
+        android:layout_below="@id/getData"
+        />
+
+</RelativeLayout>
