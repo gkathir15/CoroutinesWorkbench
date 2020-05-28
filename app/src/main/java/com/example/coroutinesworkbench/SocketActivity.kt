@@ -1,40 +1,39 @@
 package com.example.coroutinesworkbench
 
 import android.animation.LayoutTransition
-import android.os.AsyncTask
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_socket.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
-import java.lang.Exception
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.net.Socket
-import java.net.SocketAddress
-import java.nio.ByteBuffer
-import java.util.*
 
 class SocketActivity : AppCompatActivity() {
 
 
-    val ip = "192.168.0.108"
-    val port = 80
-    lateinit var socketClient: Socket
+    private val ip = "192.168.0.108"
+    private val port = 80
+    private lateinit var socketClient: Socket
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_socket)
-        rootV.layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
+        rootV.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
         connect.setOnClickListener {
 
             CoroutineScope(IO).launch { connectToSocket() }
-//            SocketAsync().execute(" ")
         }
         disConnect.setOnClickListener { CoroutineScope(IO).launch { disConnectSocket() } }
     }
 
-
+    /**
+     *
+     */
     private suspend fun connectToSocket() {
         withContext(IO) {
             try {
@@ -82,6 +81,10 @@ class SocketActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * A suspend function to disconnect the Socket form the Server.
+     * Post Connection close there can be indication on the UI and Server's log.
+     */
     private suspend fun disConnectSocket()
     {
         withContext(IO)

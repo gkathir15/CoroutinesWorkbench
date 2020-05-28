@@ -12,6 +12,7 @@ import android.view.View.VISIBLE
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_socket.*
 import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import java.net.URL
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         getData.setOnClickListener {
             Log.d("COR","1fetchRemoteData")
+            progressIndicator.isIndeterminate = true
             progressIndicator.visibility = VISIBLE
             progressIndicator.show()
          CoroutineScope(IO).launch {
@@ -36,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         socket.setOnClickListener { startActivity(Intent(this,SocketActivity::class.java)) }
+        NetWorkCall.setOnClickListener { startActivity(Intent(this,GithubListActivity::class.java)) }
 
 
 
@@ -48,11 +51,17 @@ class MainActivity : AppCompatActivity() {
 
      private suspend fun fetchRemoteData(){
          Log.d("COR","fetchRemoteData")
-            val input = URL(img2).readBytes()
-         CoroutineScope(Main).launch {
-             remoteImage.setImageBitmap(BitmapFactory.decodeByteArray(input,0,input.size))
-         progressIndicator.visibility = GONE
-         progressIndicator.hide()}
+            val input = URL(imageAddress).readBytes()
+         CoroutineScope(Default).launch {
+             val bitmap = BitmapFactory.decodeByteArray(input,0,input.size)
+             CoroutineScope(Main).launch {
+                 remoteImage.setImageBitmap(bitmap)
+                 progressIndicator.visibility = GONE
+                 progressIndicator.hide()}
+         }
+
          Log.d("COR","byteCount ${input.size}")
     }
+
+
 }
