@@ -16,7 +16,7 @@ import java.net.Socket
 class SocketActivity : AppCompatActivity() {
 
 
-    private val ip = "192.168.0.108"
+    private val ip = "192.168.56.1"
     private val port = 80
     private lateinit var socketClient: Socket
 
